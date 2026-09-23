@@ -1,0 +1,16 @@
+problem_id: "adaptive_compression_benchmark"
+tag: "algorithms"
+
+runtime:
+  language: "python"
+  version: "3.11"
+  image: "python:3.11-slim"
+  timeout_seconds: 7200
+
+environment:
+  cpus: 4
+  memory_mb: 4096
+
+submission:
+  mode: "file"
+  path: "/app/solution.py"

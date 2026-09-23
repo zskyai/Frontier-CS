@@ -1,0 +1,168 @@
+# Adaptive Compression Benchmark
+
+## Problem Description
+
+Design and implement an adaptive compression algorithm that intelligently selects the best compression strategy based on input data characteristics. Your solution must analyze data patterns and choose appropriate compression techniques to optimize both compression ratio and speed.
+
+## Challenge
+
+Different data types exhibit distinct patterns that respond differently to compression algorithms:
+- Text data has high redundancy in word patterns
+- Binary data may have little to no exploitable structure
+- JSON/structured data has predictable formatting
+- Repetitive data can achieve extreme compression
+- Low-entropy data (limited unique values) compresses well
+- High-entropy data (near-random) resists compression
+
+A truly adaptive algorithm must detect these patterns and select the optimal approach for each case.
+
+## Input
+
+Your solution will receive a `compress(data: bytes) -> bytes` function call where:
+- `data`: Input bytes to compress (size ranges from 1KB to 10MB)
+- Returns: Compressed bytes
+
+Your solution must also provide `decompress(compressed: bytes) -> bytes` to verify correctness.
+
+## Output Requirements
+
+1. **Correctness**: `decompress(compress(data))` must equal original `data`
+2. **Compression Ratio**: Smaller output is better
+3. **Speed**: Faster compression is better
+
+## Evaluation
+
+**Scoring Formula**: `score = 0.50 × correctness + 0.50 × performance`
+
+- **Correctness (50 points)**: Pass/fail for each test case
+  - All test cases must decompress correctly
+  - Any failure = 0 points for that test
+
+- **Performance (50 points)**: Relative to baseline (zlib)
+  - Compression ratio: 30 points
+    - `ratio_score = 30 × (baseline_ratio / your_ratio)`
+    - Better compression = higher score
+  - Speed: 20 points
+    - `speed_score = 20 × min(your_time / baseline_time, 2.0)`
+    - Faster = higher score (capped at 2x)
+
+**Performance Multiplier**: `(ratio_score + speed_score) / 50`
+
+**Final Score**: `correctness × 0.50 + (correctness × performance_multiplier × 0.50)`
+
+## Test Cases
+
+Your solution will be tested on 24 test cases across 6 data patterns:
+
+### 1. Text Data (4 cases)
+- English text with natural word patterns
+- High redundancy, benefits from dictionary compression
+- Sizes: 10KB, 100KB, 1MB, 5MB
+
+### 2. Binary Data (4 cases)
+- Random binary streams
+- Low compressibility, raw storage might be best
+- Sizes: 10KB, 100KB, 1MB, 5MB
+
+### 3. JSON Data (4 cases)
+- Structured data with repeated keys
+- Predictable formatting patterns
+- Sizes: 10KB, 100KB, 1MB, 5MB
+
+### 4. Repetitive Data (4 cases)
+- Same byte sequences repeated
+- Extreme compression potential with RLE
+- Sizes: 10KB, 100KB, 1MB, 5MB
+
+### 5. Low-Entropy Data (4 cases)
+- Limited unique values (e.g., 10-20 distinct bytes)
+- High redundancy but different from repetition
+- Sizes: 10KB, 100KB, 1MB, 5MB
+
+### 6. High-Entropy Data (4 cases)
+- Near-random data with high entropy
+- Minimal compression potential
+- Sizes: 10KB, 100KB, 1MB, 5MB
+
+## Baseline Solution
+
+The reference solution uses Python's `zlib` library (DEFLATE algorithm) with default compression level. This provides a strong baseline that balances speed and compression ratio across different data types.
+
+## Example Interface
+
+```python
+def compress(data: bytes) -> bytes:
+    """
+    Compress input data using adaptive strategy.
+
+    Args:
+        data: Raw bytes to compress
+
+    Returns:
+        Compressed bytes
+    """
+    # Your adaptive compression logic here
+    pass
+
+def decompress(compressed: bytes) -> bytes:
+    """
+    Decompress data compressed by your compress() function.
+
+    Args:
+        compressed: Compressed bytes
+
+    Returns:
+        Original decompressed bytes
+    """
+    # Your decompression logic here
+    pass
+```
+
+## Success Criteria
+
+A good solution should:
+- ✅ Correctly compress and decompress all test cases (100% correctness)
+- ✅ Detect data patterns (entropy analysis, pattern recognition)
+- ✅ Select appropriate compression strategies per pattern
+- ✅ Achieve better compression ratios than zlib on at least 50% of cases
+- ✅ Maintain competitive speed (within 2x of baseline)
+
+## Tips
+
+1. **Pattern Detection**: Analyze input data before choosing compression
+   - Sample entropy calculation
+   - Repetition detection
+   - Structure analysis (JSON, text markers)
+
+2. **Strategy Selection**: Different algorithms for different patterns
+   - Dictionary-based (zlib, lzma) for text/JSON
+   - RLE for repetitive data
+   - No compression for high-entropy data
+
+3. **Hybrid Approaches**: Combine multiple techniques
+   - Try multiple algorithms and pick the best
+   - Use different algorithms for different data blocks
+
+4. **Overhead Management**: Include metadata for decompression
+   - Store which algorithm was used
+   - Keep overhead minimal for small inputs
+
+## Constraints
+
+- Time limit: 120 minutes per test case
+- Memory limit: 4GB
+- Python 3.11 standard library available
+- External packages: numpy, scipy (if needed)
+
+## Scoring Example
+
+Suppose your solution:
+- Passes all 24 test cases (correctness = 100%)
+- Achieves 1.2x better compression ratio than baseline (ratio_score = 30 × 1.2 = 36)
+- Runs at 1.5x baseline speed (speed_score = 20 × 1.5 = 30)
+
+Performance multiplier = (36 + 30) / 50 = 1.32
+
+Final score = 50 × 0.50 + (50 × 1.32 × 0.50) = 25 + 33 = **58 / 100**
+
+This is a simplified calculation. Actual scoring aggregates across all test cases.

@@ -1,0 +1,146 @@
+[
+  {
+    "id": 1,
+    "pattern": "text",
+    "size": 10000,
+    "data_file": "test_001_text_10000.bin"
+  },
+  {
+    "id": 2,
+    "pattern": "text",
+    "size": 100000,
+    "data_file": "test_002_text_100000.bin"
+  },
+  {
+    "id": 3,
+    "pattern": "text",
+    "size": 1000000,
+    "data_file": "test_003_text_1000000.bin"
+  },
+  {
+    "id": 4,
+    "pattern": "text",
+    "size": 5000000,
+    "data_file": "test_004_text_5000000.bin"
+  },
+  {
+    "id": 5,
+    "pattern": "binary",
+    "size": 10000,
+    "data_file": "test_005_binary_10000.bin"
+  },
+  {
+    "id": 6,
+    "pattern": "binary",
+    "size": 100000,
+    "data_file": "test_006_binary_100000.bin"
+  },
+  {
+    "id": 7,
+    "pattern": "binary",
+    "size": 1000000,
+    "data_file": "test_007_binary_1000000.bin"
+  },
+  {
+    "id": 8,
+    "pattern": "binary",
+    "size": 5000000,
+    "data_file": "test_008_binary_5000000.bin"
+  },
+  {
+    "id": 9,
+    "pattern": "json",
+    "size": 10000,
+    "data_file": "test_009_json_10000.bin"
+  },
+  {
+    "id": 10,
+    "pattern": "json",
+    "size": 100000,
+    "data_file": "test_010_json_100000.bin"
+  },
+  {
+    "id": 11,
+    "pattern": "json",
+    "size": 1000000,
+    "data_file": "test_011_json_1000000.bin"
+  },
+  {
+    "id": 12,
+    "pattern": "json",
+    "size": 5000000,
+    "data_file": "test_012_json_5000000.bin"
+  },
+  {
+    "id": 13,
+    "pattern": "repetitive",
+    "size": 10000,
+    "data_file": "test_013_repetitive_10000.bin"
+  },
+  {
+    "id": 14,
+    "pattern": "repetitive",
+    "size": 100000,
+    "data_file": "test_014_repetitive_100000.bin"
+  },
+  {
+    "id": 15,
+    "pattern": "repetitive",
+    "size": 1000000,
+    "data_file": "test_015_repetitive_1000000.bin"
+  },
+  {
+    "id": 16,
+    "pattern": "repetitive",
+    "size": 5000000,
+    "data_file": "test_016_repetitive_5000000.bin"
+  },
+  {
+    "id": 17,
+    "pattern": "low_entropy",
+    "size": 10000,
+    "data_file": "test_017_low_entropy_10000.bin"
+  },
+  {
+    "id": 18,
+    "pattern": "low_entropy",
+    "size": 100000,
+    "data_file": "test_018_low_entropy_100000.bin"
+  },
+  {
+    "id": 19,
+    "pattern": "low_entropy",
+    "size": 1000000,
+    "data_file": "test_019_low_entropy_1000000.bin"
+  },
+  {
+    "id": 20,
+    "pattern": "low_entropy",
+    "size": 5000000,
+    "data_file": "test_020_low_entropy_5000000.bin"
+  },
+  {
+    "id": 21,
+    "pattern": "high_entropy",
+    "size": 10000,
+    "data_file": "test_021_high_entropy_10000.bin"
+  },
+  {
+    "id": 22,
+    "pattern": "high_entropy",
+    "size": 100000,
+    "data_file": "test_022_high_entropy_100000.bin"
+  },
+  {
+    "id": 23,
+    "pattern": "high_entropy",
+    "size": 1000000,
+    "data_file": "test_023_high_entropy_1000000.bin"
+  },
+  {
+    "id": 24,
+    "pattern": "high_entropy",
+    "size": 5000000,
+    "data_file": "test_024_high_entropy_5000000.bin"
+  }
+]
