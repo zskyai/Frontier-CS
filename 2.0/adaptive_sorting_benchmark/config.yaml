@@ -1,0 +1,8 @@
+version: 1.0
+language: python
+runtime:
+  image: python:3.11
+  resources:
+    cpus: 4
+    memory: 4GB
+  timeout: 7200

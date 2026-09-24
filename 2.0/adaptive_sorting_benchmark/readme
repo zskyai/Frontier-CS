@@ -1,0 +1,109 @@
+# Adaptive Sorting Benchmark
+
+## Problem Statement
+
+Design and implement an **adaptive sorting algorithm** that can recognize patterns in input data and automatically select or adjust its strategy to achieve optimal performance across different data distributions.
+
+## Challenge
+
+Unlike traditional sorting algorithms that use a fixed strategy regardless of input characteristics, your solution should:
+
+1. **Analyze input patterns** to identify data characteristics (e.g., already sorted, reverse sorted, many duplicates, random distribution)
+2. **Adapt sorting strategy** based on the detected pattern
+3. **Optimize performance** to beat a strong baseline (Python's Timsort) on pattern-specific cases
+
+## Input Specification
+
+Your solution will receive diverse integer arrays with various characteristics:
+
+- **Data patterns**:
+  - Random: uniformly distributed random integers
+  - Already sorted: arrays in ascending order
+  - Reverse sorted: arrays in descending order
+  - Many duplicates: limited unique values with high repetition
+  - Partially sorted: sorted subsequences with some disorder
+
+- **Array sizes**: ranging from small (100 elements) to large (100,000+ elements)
+
+## Output Specification
+
+Your algorithm must:
+- Return a **sorted array** in ascending order
+- Maintain **correctness** (all test cases must pass)
+- Achieve **competitive performance** across all patterns
+
+## Evaluation
+
+Your solution is scored on two dimensions:
+
+1. **Correctness (50%)**: All outputs must be correctly sorted
+2. **Performance (50%)**: Execution time compared to the baseline
+
+**Total Score** = 50 × (correct_tests / total_tests) + 50 × (baseline_time / your_time)
+
+The baseline uses Python's built-in `sorted()` function (Timsort), which is already adaptive. To achieve a high score, your algorithm must detect patterns and apply specialized optimizations.
+
+## Scoring Examples
+
+- **100 points**: All correct + 2× faster than baseline
+- **75 points**: All correct + same speed as baseline
+- **50 points**: All correct but 2× slower than baseline
+- **25 points**: Only half of test cases correct
+
+## Black-box Evaluation
+
+- Test cases and their patterns are **hidden**
+- You receive only: pass/fail status and relative performance
+- You may submit multiple times to iteratively improve your solution
+
+## Implementation Interface
+
+```python
+def sort_adaptive(arr: list[int]) -> list[int]:
+    """
+    Adaptive sorting algorithm that analyzes input patterns
+    and selects optimal strategy.
+
+    Args:
+        arr: List of integers to sort
+
+    Returns:
+        Sorted list in ascending order
+    """
+    # Your implementation here
+    pass
+```
+
+## Constraints
+
+- Time limit: 10 seconds per test case
+- Memory limit: 512 MB
+- Python 3.11+ standard library only (no external packages)
+
+## Strategy Hints
+
+Consider detecting:
+- Already sorted data (check if arr[i] <= arr[i+1] for all i)
+- Reverse sorted data (check if arr[i] >= arr[i+1] for all i)
+- Duplicate density (ratio of unique values to total length)
+- Sorted subsequence lengths (measure of partial ordering)
+
+You might combine:
+- Insertion sort for small or nearly-sorted arrays
+- Quicksort with good pivot selection for random data
+- Counting sort for arrays with many duplicates
+- Reverse operation for reverse-sorted input
+
+## Example
+
+```python
+# Nearly sorted array
+arr = [1, 2, 3, 5, 4, 6, 7, 8, 10, 9]
+result = sort_adaptive(arr)
+# Expected: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+# A good solution detects "mostly sorted" and uses insertion sort
+```
+
+---
+
+Good luck! Focus on pattern recognition and algorithmic flexibility.
